@@ -13,12 +13,14 @@ let package = Package(
         ),
     ],
     dependencies: [
- 
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.21.0"),
     ],
     targets: [
         .target(
             name: "MyAppDependencies",
             dependencies: [
+                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
+                // 👆 これだけでOK！
             ]
         ),
         .testTarget(
