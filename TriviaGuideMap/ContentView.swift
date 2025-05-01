@@ -46,16 +46,17 @@ struct ContentView: View {
     }
 
     func manualSpeak() {
-        if locationManager.location != nil {
-            let placeName = "東京駅" // Placeholder until reverse geocoding is implemented
-            fetchAndSpeak(placeName: placeName)
+        let placeName = locationManager.placeName
+        if placeName.isEmpty {
+            print("placeNameが取得できませんでした。")
+            return
         }
+        fetchAndSpeak(placeName: placeName)
     }
 
     func autoSpeakIfNeeded() {
         let now = Date()
-//        if now.timeIntervalSince(lastSpokenTime) > 60, locationManager.location != nil {
-//            let placeName = "東京駅" // Placeholder until reverse geocoding is implemented
+//        if now.timeIntervalSince(lastSpokenTime) > 60, let placeName = locationManager.placeName {
 //            fetchAndSpeak(placeName: placeName)
 //            lastSpokenTime = now
 //        }
